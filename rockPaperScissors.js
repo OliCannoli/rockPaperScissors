@@ -13,8 +13,7 @@ function getComputerChoice(){
     return computerChoice;
 }
 
-function playRound(playerSelection){
-    let computerSelection = getComputerChoice()
+function playRound(playerSelection, computerSelection){
     console.log("Player chose " + playerSelection + ", computer chose " + computerSelection);
     switch (playerSelection){
         case "rock":
@@ -54,4 +53,42 @@ function playRound(playerSelection){
             return "Invalid input."
     }
 }
-console.log(playRound(prompt("Hello world. Care for a game? Choose rock, paper, or scissors.").toLowerCase()))
+
+function game(){
+    var playerScore = 0;
+    var computerScore = 0;
+    for (let i = 0; i < 5; i++){
+        console.log(`Round ${i+1}`);
+        let result = playRound(prompt("Make your choice. Rock, paper, or scissors?"), getComputerChoice());
+        console.log(result);
+        if (result == "Invalid input."){
+            i--; // Throw away the round and try again.
+            continue;
+        }
+        else if (result.includes("win")){
+            playerScore++;
+        }
+        else if (result.includes("lose")){
+            computerScore++;
+        }
+        console.log(`Your score: ${playerScore}; computer score: ${computerScore}`);
+
+    }
+    if (playerScore > computerScore){
+        console.log("Congratulations!");
+    }
+    else if (playerScore < computerScore){
+        console.log("Better luck next time.");
+    }
+    else{
+        console.log("Alright, we'll call it a draw.");
+    }
+}
+
+var playing = true;
+while(playing){
+    game();
+    if (prompt("To exit, type 'exit'. Otherwise, type anything to play again.") == "exit"){
+        playing = false;
+    }
+}
