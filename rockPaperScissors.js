@@ -59,7 +59,7 @@ function game(){
     var computerScore = 0;
     for (let i = 0; i < 5; i++){
         console.log(`Round ${i+1}`);
-        let result = playRound(prompt("Make your choice. Rock, paper, or scissors?"), getComputerChoice());
+        let result = playRound(prompt("Make your choice. Rock, paper, or scissors?").toLowerCase(), getComputerChoice());
         console.log(result);
         if (result == "Invalid input."){
             i--; // Throw away the round and try again.
@@ -88,7 +88,7 @@ function game(){
 var playing = true;
 while(playing){
     game();
-    if (prompt("To exit, type 'exit'. Otherwise, type anything to play again.") == "exit"){
+    if (prompt("To exit, type 'exit'. Otherwise, type anything to play again.").toLowerCase() == "exit"){
         playing = false;
     }
 }
