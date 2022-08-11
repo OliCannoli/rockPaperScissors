@@ -90,5 +90,6 @@ while(playing){
     game();
     if (prompt("To exit, type 'exit'. Otherwise, type anything to play again.").toLowerCase() == "exit"){
         playing = false;
+        console.log("Thanks for playing!");
     }
 }
